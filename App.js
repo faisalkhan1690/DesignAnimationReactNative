@@ -7,10 +7,16 @@ import ProfileComponent from './src/ProfileComponent'
 
 const AppNavigator = createStackNavigator({
   HomeComponent: {
-    screen: HomeComponent
+    screen: HomeComponent,
+    navigationOptions: {
+      header: null 
+    }
   },
   ProfileComponent: {
-    screen: ProfileComponent
+    screen: ProfileComponent,
+    navigationOptions: {
+      header: null 
+    }
   }
 });
 
