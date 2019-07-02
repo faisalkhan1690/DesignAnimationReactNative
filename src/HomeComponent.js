@@ -8,8 +8,6 @@
 
 import React, {Component} from 'react';
 import {FlatList, StyleSheet, Text, View,TouchableOpacity,Image} from 'react-native';
-import family1 from './family1.png'
-
 
 export default class HomeComponent extends Component {
 
@@ -69,11 +67,11 @@ export default class HomeComponent extends Component {
       style={styles.itemStyle}
     >
       <View style={{flex:1,width:'100%'}}>
-        <Image
-        style={{width:"100%",height:250}}
-        source={item.imageUrl}
-        resizeMode='stretch'
-        />
+          <Image
+          style={{width:"100%",height:250}}
+          source={item.imageUrl}
+          resizeMode='stretch'
+          />
        <Text style={styles.textTitle}>{item.name}</Text>
        <Text>{item.address}</Text>
        <Text>{item.connecttion}</Text>

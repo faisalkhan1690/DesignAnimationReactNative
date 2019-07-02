@@ -7,8 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import {Image, StyleSheet, Text, View,ScrollView} from 'react-native';
 
 export default class ProfileComponent extends Component {
 
@@ -37,38 +36,38 @@ export default class ProfileComponent extends Component {
     >
       <ScrollView style={{flex:1,width:'100%'}}>
       <View style={{flex:1,width:'100%'}}>
-        <Image
-        style={{width:"100%",height:400}}
-        source={this.state.imageUrl}
-        resizeMode='stretch'
-        />
-        <View style={{padding:12}}>
-          <Text style={styles.textTitle}>{this.state.name}</Text>
-          <Text>{this.state.address}</Text>
-          <Text>{this.state.connecttion}</Text>
-          <Text style={styles.textTitle}>{this.state.name}</Text>
-          <Text>{this.state.address}</Text>
-          <Text>{this.state.connecttion}</Text>
-          <Text style={styles.textTitle}>{this.state.name}</Text>
-          <Text>{this.state.address}</Text>
-          <Text>{this.state.connecttion}</Text>
-          <Text style={styles.textTitle}>{this.state.name}</Text>
-          <Text>{this.state.address}</Text>
-          <Text>{this.state.connecttion}</Text>
-          <Text style={styles.textTitle}>{this.state.name}</Text>
-          <Text>{this.state.address}</Text>
-          <Text>{this.state.connecttion}</Text>
-          <Text style={styles.textTitle}>{this.state.name}</Text>
-          <Text>{this.state.address}</Text>
-          <Text>{this.state.connecttion}</Text>
-          <Text style={styles.textTitle}>{this.state.name}</Text>
-          <Text>{this.state.address}</Text>
-          <Text>{this.state.connecttion}</Text>
-          <Text style={styles.textTitle}>{this.state.name}</Text>
-          <Text>{this.state.address}</Text>
-          <Text>{this.state.connecttion}</Text>
-        </View>
-      
+          <Image
+          style={{width:"100%",height:400}}
+          source={this.state.imageUrl}
+          resizeMode='stretch'
+          />
+          <View style={{padding:12}}>
+            <Text style={styles.textTitle}>{this.state.name}</Text>
+            <Text>{this.state.address}</Text>
+            <Text>{this.state.connecttion}</Text>
+            <Text style={styles.textTitle}>{this.state.name}</Text>
+            <Text>{this.state.address}</Text>
+            <Text>{this.state.connecttion}</Text>
+            <Text style={styles.textTitle}>{this.state.name}</Text>
+            <Text>{this.state.address}</Text>
+            <Text>{this.state.connecttion}</Text>
+            <Text style={styles.textTitle}>{this.state.name}</Text>
+            <Text>{this.state.address}</Text>
+            <Text>{this.state.connecttion}</Text>
+            <Text style={styles.textTitle}>{this.state.name}</Text>
+            <Text>{this.state.address}</Text>
+            <Text>{this.state.connecttion}</Text>
+            <Text style={styles.textTitle}>{this.state.name}</Text>
+            <Text>{this.state.address}</Text>
+            <Text>{this.state.connecttion}</Text>
+            <Text style={styles.textTitle}>{this.state.name}</Text>
+            <Text>{this.state.address}</Text>
+            <Text>{this.state.connecttion}</Text>
+            <Text style={styles.textTitle}>{this.state.name}</Text>
+            <Text>{this.state.address}</Text>
+            <Text>{this.state.connecttion}</Text>
+          </View>
+          
       </View>
       </ScrollView>
     </View>
