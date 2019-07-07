@@ -7,14 +7,17 @@
  */
 
 import React, {Component} from 'react';
-import {FlatList, StyleSheet, Text, View,TouchableOpacity,Image} from 'react-native';
+import {FlatList, StyleSheet, Text, View,TouchableOpacity,Dimensions,Image,Animated} from 'react-native';
 
 export default class HomeComponent extends Component {
 
 
   constructor(){
     super();
+    this.offset = 0;
     this.state={
+      scrollOffset: new Animated.Value(0),
+      titleWidth: 0,
       listData:[
         {
           id:'1',
@@ -51,10 +54,19 @@ export default class HomeComponent extends Component {
           address:'User five adresss',
           connecttion:'5 more connection'
         }
-          
       ]
     }
   }
+
+  componentDidMount() {
+    this.state.scrollOffset.addListener(({ value }) => (this.offset = value));
+  }
+
+  onScroll = e => {
+    const scrollSensitivity = 4 / 3;
+    const offset = e.nativeEvent.contentOffset.y / scrollSensitivity;
+    this.state.scrollOffset.setValue(offset);
+  };
 
   onPressItem = (item) => {
     this.props.navigation.navigate('ProfileComponent',{item:item})
@@ -80,14 +92,57 @@ export default class HomeComponent extends Component {
   );
 
   render() {
+
+    const { scrollOffset } = this.state;
+    const screenWidth = Dimensions.get('window').width;
+
     return (
       <View style={styles.container}>
-        <View style={{width:'100%',alignItems:'center',padding:12}}>
-          <Text style={styles.textTitle}>Discover</Text>
-          </View>
+         <Animated.View
+          style={[
+            styles.header,
+            {
+              paddingHorizontal: screenWidth * 0.05,
+              width: screenWidth,
+              height: scrollOffset.interpolate({
+                inputRange: [0, 200],
+                outputRange: [120, 64],
+                extrapolate: 'clamp',
+              }),
+            },
+          ]}>
+          <Animated.Text
+            onLayout={e => {
+              if (this.offset === 0 && this.state.titleWidth === 0) {
+                const titleWidth = e.nativeEvent.layout.width;
+                this.setState({ titleWidth });
+              }
+            }}
+            style={{
+              fontWeight: 'bold',
+              fontSize: scrollOffset.interpolate({
+                inputRange: [0, 200],
+                outputRange: [26, 20],
+                extrapolate: 'clamp',
+              }),
+            }}>
+            Header Title Here
+          </Animated.Text>
+          <Animated.View
+            style={{
+              width: scrollOffset.interpolate({
+                inputRange: [0, 200],
+                outputRange: [screenWidth * 0.9 - this.state.titleWidth, 0],
+                extrapolate: 'clamp',
+              }),
+            }}
+          />
+        </Animated.View>
         <FlatList
           data={this.state.listData}
           extraData={this.state}
+          onScroll={this.onScroll}
+          scrollEventThrottle={20}
           keyExtractor={(item) => item.id}
           renderItem={this.renderItem}
       />
@@ -112,5 +167,14 @@ const styles = StyleSheet.create({
   textTitle:{
     fontSize:18,
     color:'#000'
-  }
+  },
+  header: {
+    backgroundColor: 'whitesmoke',
+    borderBottomWidth: 1,
+    borderColor: 'gainsboro',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    paddingBottom: 8,
+  },
 });
