@@ -9,6 +9,7 @@
 import React, {Component} from 'react';
 import {FlatList, StyleSheet, Text, View,TouchableOpacity,Dimensions,Image,Animated} from 'react-native';
 
+
 export default class HomeComponent extends Component {
 
 
@@ -69,7 +70,7 @@ export default class HomeComponent extends Component {
   };
 
   onPressItem = (item) => {
-    this.props.navigation.navigate('ProfileComponent',{item:item})
+    this.props.navigation.navigate('ProfileComponent',{item:item,transition: 'collapseExpand'})
   };
 
   renderItem = ({item}) => (
